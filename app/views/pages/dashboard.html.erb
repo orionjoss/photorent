@@ -1,14 +1,16 @@
 <div class="container">
-<h1>Dashboard</h1>
-<h2>My Cameras</h2>
-<% current_user.cameras.each do |camera|%>
-<%= camera.camera_type + " " + camera.brand %>
-<% end %>
+  <h1>Dashboard</h1>
+    <h2>My Cameras</h2>
+      <% current_user.cameras.each do |camera|%>
+      <%= camera.camera_type + " " + camera.brand %>
+      <% end %>
+      <h2>Manage the bookings of my <mark>owned</mark> cameras <%= current_user.first_name if user_signed_in?%></h2>
 
-<p>Manage the bookings of my <mark>owned</mark> cameras <%= current_user.first_name if user_signed_in?%></p>
-
-<h2>My Bookings</h2>
-
-<p>Manage the booking of your <mark>rented</mark> cameras <%= current_user.first_name if user_signed_in?%></p>
+    <h2>My Bookings</h2>
+      <% current_user.bookings.each do |booking|%>
+      <%= booking.camera.camera_type + " " + booking.camera.brand + " " + "Start Date" + booking.start_date.to_s + " " + "End Date" + booking.end_date.to_s %>
+      <% end %>
+      <h2>Manage the booking of your <mark>rented</mark> cameras <%= current_user.first_name if user_signed_in?%></h2>
 
 </div>
+
