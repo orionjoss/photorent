@@ -1,5 +1,9 @@
 <div class="container">
 <h1>Cameras#index</h1>
 <p>Here we will have a <strong>list of all available cameras</strong></p>
-<p><%= @cameras %></p>
+
+<%= @cameras.each do |camera| %>
+<li> @camera.brand</li>
+
+<%= end %>
 </div>
