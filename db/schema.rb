@@ -9,10 +9,22 @@
 # migrations use external dependencies or application code.
 #
 # It's strongly recommended that you check this file into your version control system.
+ActiveRecord::Schema[7.0].define(version: 2023_08_22_113342) do
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_22_105944) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bookings_tables", force: :cascade do |t|
+    t.date "start_date"
+    t.date "end_date"
+    t.string "status"
+    t.bigint "user_id", null: false
+    t.bigint "camera_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["camera_id"], name: "index_bookings_tables_on_camera_id"
+    t.index ["user_id"], name: "index_bookings_tables_on_user_id"
+  end
 
   create_table "cameras", force: :cascade do |t|
     t.string "type"
@@ -38,5 +50,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_22_105944) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bookings_tables", "cameras"
+  add_foreign_key "bookings_tables", "users"
   add_foreign_key "cameras", "users"
 end
