@@ -2,9 +2,9 @@ require 'faker'
 
 puts "Clearing the database"
 
-User.destroy_all
-Camera.destroy_all
 Booking.destroy_all
+Camera.destroy_all
+User.destroy_all
 
 puts "Database cleared"
 
@@ -34,16 +34,17 @@ puts "User created"
 
 puts "Creating camera"
 Camera.create(
-  type: ["DSLR", "Mirrorless", "Point-and-shoot"].sample,
+  camera_type: ["DSLR", "Mirrorless", "Point-and-shoot"].sample,
   brand: ["Canon", "Nikon", "Sony", "Fujifilm"].sample,
   user_id: User.pluck(:id).sample,
-  address: Faker::Address.address)
+  address: Faker::Address.full_address)
 puts "Camera created"
 
 puts "Creating booking"
 Booking.create(
-  start_date: Faker::Date.forward(days: 30),
-  end_date: :start_date + rand(1..7).days,
+  start_date: Date.today,
+  end_date: Faker::Date.forward(days: 30),
   user_id: User.pluck(:id).sample,
+  camera_id: Camera.pluck(:id).sample,
   status: ["Pending", "Confirmed", "Declined"].sample)
 puts "Booking created"
