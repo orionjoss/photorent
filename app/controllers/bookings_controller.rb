@@ -1,6 +1,5 @@
 class BookingsController < ApplicationController
   def index
-
     @bookings = Booking.All
   end
 
@@ -19,12 +18,6 @@ class BookingsController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
-  end
-
-  def update
-  end
-
-  def edit
   end
 
   def destroy
