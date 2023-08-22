@@ -1,2 +1,14 @@
+<div class="container">
 <h1>Dashboard</h1>
-<p>Welcome to your dashboard <%= current_user.first_name if user_signed_in?%></p>
+<h2>My Cameras</h2>
+<% current_user.cameras.each do |camera|%>
+<%= camera.camera_type + " " + camera.brand %>
+<% end %>
+
+<p>Manage the bookings of my <mark>owned</mark> cameras <%= current_user.first_name if user_signed_in?%></p>
+
+<h2>My Bookings</h2>
+
+<p>Manage the booking of your <mark>rented</mark> cameras <%= current_user.first_name if user_signed_in?%></p>
+
+</div>
