@@ -1,9 +1,11 @@
 class CamerasController < ApplicationController
   def index
     @cameras = Camera.all
+    @camera = Camera.new
   end
 
-  def show;
+  def show
+    @camera = Camera.find(params[:id])
   end
 
   def new
@@ -22,7 +24,8 @@ class CamerasController < ApplicationController
 
   end
 
-  def edit;
+  def edit
+    @camera = Camera.find(params[:id])
   end
 
   def update;
