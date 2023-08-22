@@ -1,6 +1,7 @@
 class CamerasController < ApplicationController
   def index
     @cameras = Camera.all
+    @camera = Camera.new
   end
 
   def show;
@@ -22,7 +23,7 @@ class CamerasController < ApplicationController
 
   end
 
-  def edit;
+  def edit
   end
 
   def update;

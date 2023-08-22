@@ -1,2 +1,9 @@
-<h1>Cameras#new</h1>
-<p>Find me in app/views/cameras/new.html.erb</p>
+<br>
+<br>
+<div class="container">
+  <h1>Upload your new camera</h1>
+  <p>Please define <strong>type of camera, brand, pickup address</strong> and upload a good quality <strong>image of your camera.</strong></p>
+  <p><%= link_to "> Back to listings", cameras_path %></p>
+  <%= render "form-new", camera: @camera %>
+
+</div>

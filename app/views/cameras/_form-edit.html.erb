@@ -1,0 +1,16 @@
+
+<%= simple_form_for(@camera) do |form| %>
+
+  <div class="form-inputs">
+    <%= form.input :type %>
+    <%= f.input :type, collection: %w[dslr mirrorless compact point&shoot] %>
+
+    <%= form.input :brand %>
+    <%= form.input :address %>
+  </div>
+
+  <div class="form-actions">
+    <%= form.button :submit %>
+  </div>
+<% end %>
+</div>
