@@ -1,7 +1,12 @@
-<h1>Cameras#show</h1>
-<p>Here we will have a <strong>camera with image, brand, type and location</strong></p>
-<p>We will also have a <strong>form for the bookings</strong></p>
-
-<p><%= @camera.brand %></p>
-<p><%= @camera.type %></p>
-<p><%= @camera.address %></p>
+<br>
+<br>
+<div class="container">
+  <br>
+  <p>There will be an <strong>image: here</strong></p>
+  <br>
+  <p>you selected a:</p>
+  <h1><%= @camera.brand %> camera</h1>
+  <h5>brand: <%= @camera.brand %></h5>
+  <h5>type: <%= @camera.camera_type %></h5>
+  <h5>address: <%= @camera.address %></h5>
+</div>
