@@ -5,28 +5,29 @@
       <%= text_field_tag :query,
             params[:query],
             class: "form-control",
-            placeholder: "Type a camera brand"
+            placeholder: "Type a keyword"
         %>
       <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
     <% end %>
-</div>
+  </div>
 </div>
 <br>
   <h1><strong>All Listings</strong></h1>
   <p>List of all available gear:</p>
   <hr>
-  <% @cameras.each do |camera| %>
-  <div>
-  <br>
-  <p><strong>[picture here]</strong></p>
-  <br>
-  <h4><%= link_to camera.brand, camera%></h4>
-  <h6><%= camera.camera_type %></h6>
-  <h6><%= camera.address %></h6>
-  <h6><%= camera.user.first_name %> <%= camera.user.last_name %></h6>
-
+  <% if @cameras.any? %>
+    <% @cameras.each do |camera| %>
+    <div>
+    <br>
+    <p><strong>[picture here]</strong></p>
+    <br>
+    <h4><%= link_to camera.brand, camera%></h4>
+    <h6><%= camera.camera_type %></h6>
+    <h6><%= camera.address %></h6>
+    <h6><%= camera.user.first_name %> <%= camera.user.last_name %></h6>
+    <% end %>
+     <% else %>
+          <em>Sorry, no cameras found.</em>
+        <% end %>
   <hr>
   </div>
-  <% end %>
-
-</div>
