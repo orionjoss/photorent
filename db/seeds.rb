@@ -62,5 +62,5 @@ Booking.create(
   end_date: Faker::Date.forward(days: 30),
   user_id: User.pluck(:id).sample,
   camera_id: Camera.pluck(:id).sample,
-  status: ["Pending", "Confirmed", "Declined"].sample)
+  status: ["Available", "Pending", "Confirmed", "Declined"].sample)
 puts "Booking created"

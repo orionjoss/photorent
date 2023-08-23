@@ -3,8 +3,14 @@ Rails.application.routes.draw do
   root to: "cameras#index"
 
   resources :cameras do
-    resources :bookings
+    resources :bookings do
+      member do
+        patch :accept
+        patch :decline
+      end
+    end
   end
 
   get "/dashboard", to: "pages#dashboard"
+  # get "/dashboard", to: "bookings#accept"
 end
