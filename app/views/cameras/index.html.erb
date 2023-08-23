@@ -3,15 +3,19 @@
 <div class="container">
   <h1>All Cameras</h1>
   <p>List of all currently available cameras:</p>
-
+  <h4><%= link_to "add new camera", "/cameras/new"%></h4>
+  <hr>
   <% @cameras.each do |camera| %>
   <div>
   <br>
   <p><strong>[picture here]</strong></p>
   <br>
-  <h4><%= camera.brand %></h4>
+  <h4><%= link_to camera.brand, camera%></h4>
   <h6><%= camera.camera_type %></h6>
   <h6><%= camera.address %></h6>
+  <h6><%= camera.user.first_name %> <%= camera.user.last_name %></h6>
+
+  <hr>
   </div>
   <% end %>
 

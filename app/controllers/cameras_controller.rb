@@ -40,9 +40,10 @@ class CamerasController < ApplicationController
     end
   end
 
-  def destroy;
+  def destroy
+    @camera = Camera.find(params[:id])
     @camera.destroy
-    redirect_to @cameras, status: :see_other
+    redirect_to cameras_path, status: :see_other
   end
 
   private
