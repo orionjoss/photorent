@@ -1,14 +1,14 @@
 <%= simple_form_for(@camera) do |form| %>
 
   <div class="form-inputs">
-    <%= form.input :camera_type, collection: %w[DSL Mirrorless Compact Film Instant], prompt: "Choose the type of camera" %>
     <%= form.input :brand, collection: %w[Nikon Canon Sony Olympus Leica Polaroid Instax], prompt: "Choose the brand of your camera"%>
+    <%= form.input :camera_type, collection: %w[DSL Mirrorless Compact Film Instant], prompt: "Choose the type of camera" %>
     <%= form.input :address %>
 
   </div>
 
   <div class="form-actions">
-    <%= form.button :submit, 'Upload your camera'%>
+    <%= form.button :submit, 'Upload your camera', :class => "btn btn-primary text-white" %>
   </div>
 <% end %>
 </div>
