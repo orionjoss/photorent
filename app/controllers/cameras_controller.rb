@@ -17,7 +17,8 @@ class CamerasController < ApplicationController
     @camera.user = current_user
 
     if @camera.save
-      redirect_to @cameras
+      redirect_to camera_path(@camera)
+
     else
       render :new, status: :unprocessable_entity
     end
@@ -28,9 +29,10 @@ class CamerasController < ApplicationController
     @camera = Camera.find(params[:id])
   end
 
-  def update;
+  def update
+    @camera = Camera.find(params[:id])
     if @camera.update(camera_params)
-      redirect_to @cameras
+      redirect_to camera_path
     else
       render :edit, status: :unprocessable_entity
     end
@@ -44,6 +46,6 @@ class CamerasController < ApplicationController
   private
 
   def camera_params
-    params.require(:cameras).permit(:type, :brand, :user_id)
+    params.require(:camera).permit(:brand, :camera_type, :address, :user_id)
   end
 end
