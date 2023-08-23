@@ -1,9 +1,18 @@
+<br>
+<br>
 <div class="container">
-  <h1>Camera: <%= @camera.brand %></h1>
-  <p>Here we will have a <strong>list of all available cameras</strong></p>
+  <h1>All Cameras</h1>
+  <p>List of all currently available cameras:</p>
 
   <% @cameras.each do |camera| %>
-  <li><%= camera.brand %> | <%= camera.camera_type %> | <%= camera.address %></li>
+  <div>
+  <br>
+  <p><strong>[picture here]</strong></p>
+  <br>
+  <h4><%= camera.brand %></h4>
+  <h6><%= camera.camera_type %></h6>
+  <h6><%= camera.address %></h6>
+  </div>
   <% end %>
 
 </div>
