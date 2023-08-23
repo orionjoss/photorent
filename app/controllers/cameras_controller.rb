@@ -7,9 +7,20 @@ class CamerasController < ApplicationController
     if params[:query].present?
       @cameras = @cameras.where(camera_type: params[:query])
     end
+
     if params[:query].present?
       sql_subquery = "camera_type ILIKE :query OR brand ILIKE :query"
       @cameras = @cameras.where(sql_subquery, query: "%#{params[:query]}%")
+    end
+
+    if params[:query].present?
+      sql_subquery = <<~SQL
+        cameras.brand ILIKE :query
+        OR cameras.camera_type ILIKE :query
+        OR users.first_name ILIKE :query
+        OR users.last_name ILIKE :query
+      SQL
+      @cameras = @cameras.joins(:user).where(sql_subquery, query: "%#{params[:query]}%")
     end
   end
 
