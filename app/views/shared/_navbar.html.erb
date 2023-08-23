@@ -1,6 +1,6 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
     <%= link_to "#", class: "navbar-brand" do %>
-        <h3><strong>Camshare</strong></h3>
+        <h3><strong>PixelShare</strong></h3>
       <%# <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
     <% end %>
 
@@ -14,8 +14,8 @@
           <div>
             <li>
               <form class="form-inline mr-auto">
-                <input class="form-control mr-sm-2" type="text" placeholder="Camera name" aria-label="Search">
-                <button class="btn btn-primary btn-sm my-0" type="submit">Find cameras</button>
+                <input class="form-control mr-sm-2" type="text" placeholder="Type keyword" aria-label="Search">
+                <button class="btn btn-sm my-0" type="submit"><%= link_to "Search", "/cameras?query" %></button>
                 </form>
                   </li>
                    </div>
