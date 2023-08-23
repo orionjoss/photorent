@@ -27,6 +27,21 @@ class BookingsController < ApplicationController
     redirect_to camera_path(@booking.camera), status: :see_other
   end
 
+  def accept
+    @booking = Booking.find(params[:id])
+    @booking.update!({status: "Accepted"})
+    redirect_to dashboard_path
+  end
+
+    #if user clicks on "accept" button then change status to "accepted"
+    #else change to status "available"
+
+  def decline
+      @booking = Booking.find(params[:id])
+      @booking.update!({status: "Rejected"})
+      redirect_to dashboard_path
+    end
+
   private
 
   def booking_params
