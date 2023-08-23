@@ -1,2 +1,9 @@
-<h1>Cameras#edit</h1>
-<p>Find me in app/views/cameras/edit.html.erb</p>
+<br>
+<br>
+<div class="container">
+  <h1>Edit the settings of your <%= @camera.brand %></h1>
+  <p>Here we will have a <strong>form where we can change the camera info</strong></p>
+
+  <div><%= render "form-edit", camera: @camera %>
+  
+</div>

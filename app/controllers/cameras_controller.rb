@@ -1,9 +1,13 @@
 class CamerasController < ApplicationController
+  skip_before_action :authenticate_user!, only: %i[index show]
+
   def index
     @cameras = Camera.all
+    @camera = Camera.new
   end
 
-  def show;
+  def show
+    @camera = Camera.find(params[:id])
   end
 
   def new
@@ -15,32 +19,36 @@ class CamerasController < ApplicationController
     @camera.user = current_user
 
     if @camera.save
-      redirect_to @cameras
+      redirect_to camera_path(@camera)
+
     else
       render :new, status: :unprocessable_entity
     end
 
   end
 
-  def edit;
+  def edit
+    @camera = Camera.find(params[:id])
   end
 
-  def update;
+  def update
+    @camera = Camera.find(params[:id])
     if @camera.update(camera_params)
-      redirect_to @cameras
+      redirect_to camera_path
     else
       render :edit, status: :unprocessable_entity
     end
   end
 
-  def destroy;
+  def destroy
+    @camera = Camera.find(params[:id])
     @camera.destroy
-    redirect_to @cameras, status: :see_other
+    redirect_to cameras_path, status: :see_other
   end
 
   private
 
   def camera_params
-    params.require(:cameras).permit(:type, :brand, :user_id)
+    params.require(:camera).permit(:brand, :camera_type, :address, :user_id)
   end
 end
