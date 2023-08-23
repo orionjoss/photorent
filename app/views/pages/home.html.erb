@@ -1,4 +1,9 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-<%= user_signed_in? %>
-<%# <%= current_user.email %>
+<br>
+<br>
+<div class="container">
+<h1>Welcome to <strong>PhotoRent</strong></h1>
+<p>Your community for lending and borrowing photographic cameras.</p>
+<p>Please <%= link_to "Sign up", new_user_registration_path%> or <%= link_to "Log in", user_session_path%> to see the best cameras in town.</p>
+<%# <%= user_signed_in? %>
+<%# <%= current_user.name %>
+</div>

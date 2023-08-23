@@ -17,6 +17,7 @@ class CamerasController < ApplicationController
     @camera.user = current_user
 
     if @camera.save
+      raise
       redirect_to camera_path(@camera)
 
     else
