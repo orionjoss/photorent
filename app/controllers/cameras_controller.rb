@@ -4,6 +4,13 @@ class CamerasController < ApplicationController
   def index
     @cameras = Camera.all
     @camera = Camera.new
+    if params[:query].present?
+      @cameras = @cameras.where(camera_type: params[:query])
+    end
+    if params[:query].present?
+      sql_subquery = "camera_type ILIKE :query OR brand ILIKE :query"
+      @cameras = @cameras.where(sql_subquery, query: "%#{params[:query]}%")
+    end
   end
 
   def show
