@@ -3,7 +3,18 @@ class CamerasController < ApplicationController
 
   def index
     @cameras = Camera.all
-    @camera = Camera.new
+    if params[:query].present?
+      @cameras = Camera.global_search(params[:query])
+    end
+    # OLD SQL query
+    #   sql_subquery = <<~SQL
+    #     cameras.brand @@ :query
+    #     OR cameras.camera_type @@ :query
+    #     OR users.first_name @@ :query
+    #     OR users.last_name @@ :query
+    #   SQL
+    #   @cameras = @cameras.joins(:user).where(sql_subquery, query: params[:query])
+    # end
   end
 
   def show
