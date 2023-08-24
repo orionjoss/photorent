@@ -5,15 +5,15 @@ class BookingsController < ApplicationController
 
   def new
     @camera = Camera.find(params[:camera_id])
-    @bookings = Booking.New
+    @booking = Booking.new
   end
 
   def create
     @camera = Camera.find(params[:camera_id])
-    @bookings = Booking.new(booking_params)
+    @booking = Booking.new(booking_params)
     @booking.camera = @camera
     @booking.user = current_user
-    if @bookings.save
+    if @booking.save
       redirect_to camera_path(@camera)
     else
       render :new, status: :unprocessable_entity
@@ -59,6 +59,6 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date)
+    params.require(:booking).permit(:start_date, :end_date, :vehicle_id)
   end
 end

@@ -1,2 +1,8 @@
-<h1>Bookings#new</h1>
-<p>Find me in app/views/bookings/new.html.erb</p>
+<h1>Book your item</h1>
+<%= simple_form_for [@camera, @booking] do |form| %>
+<div class="form-inputs">
+    <%= form.input :start_date %>
+    <%= form.input :end_date %>
+</div>
+    <%= form.submit 'Confirm booking', class: "btn btn-primary btn-sm text-white" %>
+<% end %>
