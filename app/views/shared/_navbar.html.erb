@@ -1,6 +1,6 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
     <%= link_to "#", class: "navbar-brand" do %>
-        <h3><strong>Camshare</strong></h3>
+        <h3><strong>PixelShare</strong></h3>
       <%# <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
     <% end %>
 
@@ -12,33 +12,35 @@
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
           <div>
-            <li>
-              <form class="form-inline mr-auto">
-                <input class="form-control mr-sm-2" type="text" placeholder="Camera name" aria-label="Search">
-                <button class="btn btn-primary btn-sm my-0" type="submit">Find cameras</button>
-                </form>
-                  </li>
-                   </div>
-                    <li class="nav-item active">
-                      <%= link_to "Dashboard", "#", class: "nav-link" %>
-                    </li>
-                    <li class="nav-item">
-                      <%= link_to "Add listing", "/cameras/new" %>
-                    </li>
-                    <li class="nav-item dropdown" align:>
-                      <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "dropdown menu" %>
-                      </a>
-                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                      <%= link_to "Action", "#", class: "dropdown-item" %>
-                      <%= link_to "Another action", "#", class: "dropdown-item" %>
-                      <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
-                    </div>
-                      </li>
-                        <% else %>
-                        <li class="nav-item">
-                        <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-                        </li>
+            <%= form_with url: cameras_path, method: :get, class: "d-flex" do %>
+              <%= text_field_tag :query,
+                    params[:query],
+                    class: "form-control",
+                    placeholder: "Type a keyword"
+                %>
+              <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+            <% end %>
+          </div>
+            <li class="nav-item active">
+              <%= link_to "Dashboard", "#", class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Add listing", "/cameras/new" %>
+            </li>
+            <li class="nav-item dropdown" align:>
+              <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "dropdown menu" %>
+              </a>
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <%= link_to "Action", "#", class: "dropdown-item" %>
+              <%= link_to "Another action", "#", class: "dropdown-item" %>
+              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+            </div>
+              </li>
+                <% else %>
+                <li class="nav-item">
+                <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+                </li>
               <% end %>
       </ul>
     </div>
