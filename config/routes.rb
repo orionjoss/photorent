@@ -11,6 +11,10 @@ Rails.application.routes.draw do
     end
   end
 
+  # resources :dashboard do
+  #   resources :cameras
+  # end
+
   get "/dashboard", to: "pages#dashboard"
-  # get "/dashboard", to: "bookings#accept"
+  # get "/cameras/dashboard", to: "pages#dashboard"
 end
