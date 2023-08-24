@@ -4,7 +4,7 @@
   <br>
   <br>
   <p>you selected a:</p>
-  <h1><%= @camera.brand %> camera <%= link_to "< Book me!", edit_camera_path, :class => "btn btn-outline-primary"  %></h1>
+  <h1><%= @camera.brand %> camera <%= link_to "< Book me!", new_camera_booking_path(camera_id: @camera.id, booking_id: @booking_id), :class => "btn btn-outline-primary"  %></h1>
 
   <h5>brand: <%= @camera.brand %></h5>
   <h5>type: <%= @camera.camera_type %></h5>
