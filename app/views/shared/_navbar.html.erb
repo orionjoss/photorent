@@ -1,57 +1,60 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-    <%= link_to "#", class: "navbar-brand" do %>
-          <h2><%= link_to "PixelShare", cameras_path, :class => "navbar-brand"  %></h2>
-      <%# <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
+  <div id="our-logo">
+
+  <%= link_to "PixelShare", cameras_path, :class => "navbar-brand"%>
+
+  </div>
+
+  <%# <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+  </button> %>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav me-auto">
+      <% if user_signed_in? %>
+        <div>
+          <%= form_with url: cameras_path, method: :get, class: "navbar-search d-flex" do %>
+            <%= text_field_tag :query,
+                  params[:query],
+                  class: "form-control mx-2",
+                  placeholder: "Find the perfect gear for you"
+              %>
+            <%= submit_tag "Search", name: "", class: "btn btn-secondary btn-sm navbar-search-btn" %>
+        </div>
+      <% end %>
+
+      <div><%= link_to "Dashboard", dashboard_path, class: "btn btn-light btn-sm navbar-btn text-decoration-none" %></div>
+
+      <div><%= link_to "Add listing", new_camera_path, class: "btn btn-light btn-sm navbar-btn text-decoration-none"%></div>
+
+      <li class="nav-item dropdown" align:>
+
+        <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <%= image_tag "https://avatars.githubusercontent.com/u/21160316?v=4", class: "avatar", alt: "dropdown menu" %>
+        </a>
+
+        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+          <%= link_to "Profile page", "#", class: "dropdown-item" %>
+          <%= link_to "Dashboard", "#", class: "dropdown-item" %>
+          <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+        </div>
+      </li>
+
+    <% else %>
+      <li><%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %></li>
+      <li><strong><%= link_to "Login", new_user_session_path, class: "nav-link" %></strong></li>
     <% end %>
 
-  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-  </button>
+    </ul>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
-        <% if user_signed_in? %>
-          <div>
-            <%= form_with url: cameras_path, method: :get, class: "d-flex" do %>
-              <%= text_field_tag :query,
-                    params[:query],
-                    class: "form-control",
-                    placeholder: "Type a keyword"
-                %>
-              <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
-            <% end %>
-          </div>
-              <li class="btn btn-outline-primary">
-              <%= link_to "Dashboard", dashboard_path %>
-
-              </li>
-            <li class="btn btn-outline-warning">
-              <%= link_to "Add listing", "/cameras/new" %>
-            </li>
-            <li class="nav-item dropdown" align:>
-              <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "dropdown menu" %>
-              </a>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Action", "#", class: "dropdown-item" %>
-              <%= link_to "Another action", "#", class: "dropdown-item" %>
-              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
-            </div>
-              </li>
-                <% else %>
-                <li class="nav-item">
-                <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-                </li>
-              <% end %>
-      </ul>
-    </div>
   </div>
 </div>
-<br>
-<div class="container">
+
+<div class="container mt-3">
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
             <li class="breadcrumb-item"><a href="#">Library</a></li>
             <li class="breadcrumb-item active" aria-current="page">Data</li>
           </ol>
-      </div>
+</div>
+
