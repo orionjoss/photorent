@@ -6,5 +6,4 @@ class Camera < ApplicationRecord
   validates :brand, presence: true
   validates :camera_type, presence: true
   validates :address, presence: true
-
 end
