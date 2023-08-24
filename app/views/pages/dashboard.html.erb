@@ -9,10 +9,6 @@
           <%=booking.status%>
                 <%=button_to "✅ Approve", accept_camera_booking_path(:camera_id => booking.camera, :id => booking), method: :patch, class: "btn btn-outline-success" %>
                 <%=button_to "❌ Reject", decline_camera_booking_path(:camera_id => booking.camera, :id => booking), method: :patch, class: "btn btn-outline-danger" %>
-                <%# # Iterate over all camera bookings - DONE
-                # If booking status = pending we create accept and decline buttons- DONE
-                # accept and decline buttons should be routed to the correct methods in bookings controller - DONE
-                # Define accept and decline methods in bookings controller  DONE %>
               <% end %>
             <% end %>
         </li>
