@@ -5,7 +5,7 @@
     <%= form.input :camera_type, collection: %w[DSL Mirrorless Compact Film Instant], prompt: "Choose the type of camera" %>
     <%= form.input :address,
     input_html: {data: {address_autocomplete_target: "address"}},
-    wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]} class:"d-none"}%>
+    wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}, class:"d-none"}%>
 
   </div>
 
