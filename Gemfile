@@ -3,6 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.1.2"
 
+gem "geocoder"
+
 gem "pg_search"
 
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'main'

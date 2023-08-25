@@ -1,5 +1,7 @@
 class Camera < ApplicationRecord
   belongs_to :user
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
 
   has_many :bookings, dependent: :destroy
   has_one_attached :photo
@@ -8,6 +10,7 @@ class Camera < ApplicationRecord
   validates :brand, presence: true
   validates :camera_type, presence: true
   validates :address, presence: true
+
 
   include PgSearch::Model
   pg_search_scope :global_search,

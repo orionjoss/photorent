@@ -33,50 +33,10 @@ puts "Created Hugo user"
 puts "User created"
 
 puts "Creating camera"
+
 Camera.create(
-  camera_type: ["DSLR", "Mirrorless", "Point-and-shoot"].sample,
+  camera_type: ["DSLR", "SLR", "Mirrorless", "Point-and-shoot"].sample,
   brand: ["Canon", "Nikon", "Sony", "Fujifilm"].sample,
   user_id: User.pluck(:id).sample,
   address: Faker::Address.full_address)
 puts "Camera created"
-
-puts "Creating camera"
-Camera.create(
-  camera_type: ["DSLR", "Mirrorless", "Point-and-shoot"].sample,
-  brand: ["Canon", "Nikon", "Sony", "Fujifilm"].sample,
-  user_id: User.pluck(:id).sample,
-  address: Faker::Address.full_address)
-puts "Camera created"
-
-puts "Creating camera"
-Camera.create(
-  camera_type: ["DSLR", "Mirrorless", "Point-and-shoot"].sample,
-  brand: ["Canon", "Nikon", "Sony", "Fujifilm"].sample,
-  user_id: User.pluck(:id).sample,
-  address: Faker::Address.full_address)
-puts "Camera created"
-
-puts "Creating booking"
-Booking.create(
-  start_date: Date.today,
-  end_date: Faker::Date.forward(days: 30),
-  user_id: User.pluck(:id).sample,
-  camera_id: Camera.pluck(:id).sample,
-  status: ["Available", "Pending", "Confirmed", "Declined"].sample)
-puts "Booking created"
-
-Booking.create(
-  start_date: Date.today,
-  end_date: Faker::Date.forward(days: 30),
-  user_id: User.pluck(:id).sample,
-  camera_id: Camera.pluck(:id).sample,
-  status: ["Available", "Pending", "Confirmed", "Declined"].sample)
-puts "Booking created"
-
-Booking.create(
-  start_date: Date.today,
-  end_date: Faker::Date.forward(days: 30),
-  user_id: User.pluck(:id).sample,
-  camera_id: Camera.pluck(:id).sample,
-  status: ["Available", "Pending", "Confirmed", "Declined"].sample)
-puts "Booking created"
