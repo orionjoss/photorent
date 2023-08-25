@@ -1,2 +1,23 @@
 // Import page-specific CSS files here.
 @import "home";
+
+.container-cards {
+  font-family: 'Amaranth', sans-serif;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+}
+
+.card-box {
+  background-color:  rgb(10, 68, 100);
+  // color: white;
+  padding: 20px;
+  border-radius: 0px 0px 0px 30px;
+}
+
+.card-box h4 {
+  font-family: 'Amaranth', sans-serif;
+  font-weight: bold;
+  // font-size: x-large;
+  // color:  rgb(215, 241, 255);
+}

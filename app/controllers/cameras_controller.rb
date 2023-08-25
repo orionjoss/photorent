@@ -28,6 +28,7 @@ class CamerasController < ApplicationController
   def create
     @camera = Camera.new(camera_params)
     @camera.user = current_user
+    # @photo = Camera.photo.find(params[:id])
 
     if @camera.save
       redirect_to camera_path(@camera)

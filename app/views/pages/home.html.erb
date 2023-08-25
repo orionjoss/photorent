@@ -1,9 +1,19 @@
-<br>
-<br>
-<div class="container">
-<h1>Welcome to <strong>PhotoRent</strong></h1>
-<p>Your community for lending and borrowing photographic cameras.</p>
-<p>Please <%= link_to "Sign up", new_user_registration_path%> or <%= link_to "Log in", user_session_path%> to see the best cameras in town.</p>
+<!-- <%= cl_image_tag("ilu_landing_page2_ycy9dv",
+      width: 400, height: 300, crop: :fill) %> -->
+
+<div>
+  <%= image_tag "https://res.cloudinary.com/div6oduuz/image/upload/v1692925270/ilu_landing_page2_ycy9dv.png", class: "ilu_landing_page", alt: "people sharing cameras" %>
+  <div class="centered">
+
+  <h1>Lucy loves classic cameras.</h1>
+  <h1>Hugh needs a DSLR for a project.</h1>
+  <br>
+  <h5>Sharing is Caring. Now you have a community for lending and borrowing photographic cameras.</h4>
+  <br>
+  <p>Please <%= link_to "Sign up", new_user_registration_path%> or <%= link_to "Log in", user_session_path%> to see the best cameras in town.</p>
+
+  </div>
+</div>
+
 <%# <%= user_signed_in? %>
 <%# <%= current_user.name %>
-</div>
