@@ -1,19 +1,30 @@
+<div class="container d-flex justify-content-center mt-5">
 
-<div class="container">
-<%= cl_image_tag @camera.photo.key, height: 300, width: 400, crop: :fill %>
-  <br>
-  <br>
-  <p>you selected a:</p>
-  <h1><%= @camera.brand %> camera <%= link_to "< Book me!", new_camera_booking_path(camera_id: @camera.id, booking_id: @booking_id), :class => "btn btn-outline-primary"  %></h1>
+  <div id="big pic" >
+  <%= cl_image_tag @camera.photo.key, height: 450, width: 700, crop: :fill, class: "cam-pic" %>
+  </div>
 
-  <h5>brand: <%= @camera.brand %></h5>
-  <h5>type: <%= @camera.camera_type %></h5>
-  <h5>address: <%= @camera.address %></h5>
-  <h5>owner: <%= @camera.user.first_name %> <%= @camera.user.last_name %></h6>
+  <div id="cam specs" class="cam-card px-5 py-5" style="border-radius: 0px 40px 40px 0px;">
 
-  <br>
-  <%= link_to "> Back to listings", cameras_path, :class => "btn btn-dark text-white btn-sm"  %>
-  <br>
-  <br>
+    <div class="d-flex align"><%= link_to "< Book me!", new_camera_booking_path(camera_id: @camera.id, booking_id: @booking_id), :class => "btn btn-light btn-lg btn-book" %>
+    </div>
+
+    <h1 class="mt-5" style="font-family: 'Amaranth', sans-serif;"><%= @camera.brand %> <%= @camera.camera_type %> camera </h1>
+
+    <h5>brand: <%= @camera.brand %> | type: <%= @camera.camera_type %></h5>
+    <h5>address: <%= @camera.address %></h5>
+    <h5 class="mb-5">owner: <%= @camera.user.first_name %> <%= @camera.user.last_name %></h6>
+
+    <div class="d-flex align-items-end">
+      <%= link_to "> Back to listings", cameras_path, :class => "btn btn-dark btn-bar text-white btn-sm mx-1" %>
+      <%= link_to "Edit camera", edit_camera_path(@camera), class: "btn btn-primary btn-bar text-white btn-sm mx-1" %>
+      <%= link_to "x Delete camera",
+        camera_path(@camera),
+        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
+        class: "btn btn-danger btn-bar text-white btn-sm mx-1" %>
+
+    </div>
+
+  </div>
 
 </div>
