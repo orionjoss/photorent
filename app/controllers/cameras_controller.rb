@@ -2,18 +2,18 @@ class CamerasController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
-    @cameras = Camera.all
     if params[:query].present?
-      @cameras = Camera.global_search(params[:query])
-    end
-    @cameras = Camera.geocoded
-    @markers = @cameras.map do |camera|
-      {
-        lat: camera.latitude,
-        lng: camera.longitude,
-        info_window_html: render_to_string(partial: "info_window", locals: {camera: camera}),
-        marker_html: render_to_string(partial: "marker")
-      }
+      @cameras = Camera.global_search(params[:query]).geocoded
+    else
+      @cameras = Camera.geocoded
+      @markers = @cameras.map do |camera|
+        {
+          lat: camera.latitude,
+          lng: camera.longitude,
+          info_window_html: render_to_string(partial: "info_window", locals: {camera: camera}),
+          marker_html: render_to_string(partial: "marker")
+        }
+      end
     end
   end
 
