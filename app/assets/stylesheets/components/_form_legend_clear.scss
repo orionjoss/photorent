@@ -8,3 +8,23 @@
 legend ~ div.form-check:first-of-type {
   clear: left;
 }
+
+.form-btn-new{
+  border-radius: 25px;
+  background-color: rgb(76, 162, 209);
+  color:whitesmoke;
+  border: none;
+  padding: 10px 15px 10px 15px;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+.form-btn-back{
+  border-radius: 25px;
+  // background-color: none;
+  // color:whitesmoke;
+  // border: 1px;
+  // border-color: white;
+  padding: 10px 15px 10px 15px;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
