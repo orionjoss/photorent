@@ -1,23 +1,56 @@
-<div class="container">
-  <h1>Dashboard</h1>
-    <h2>My Cameras</h2>
-      <p><%= current_user.first_name if user_signed_in?%>'s <mark>owned</mark> cameras </p>
-          <% current_user.cameras.each do |camera|%>
-          <%# <%= link_to camera.camera_type + " | " + camera.brand + " | "%>
-          <h4><%= link_to camera.brand, camera %></h4>
-          <% camera.bookings.each do |booking|%>
-          <%=booking.status%>
-                <%=button_to "✅ Approve", accept_camera_booking_path(:camera_id => booking.camera, :id => booking), method: :patch, class: "btn btn-outline-success" %>
-                <%=button_to "❌ Reject", decline_camera_booking_path(:camera_id => booking.camera, :id => booking), method: :patch, class: "btn btn-outline-danger" %>
-              <% end %>
-            <% end %>
-<div><%=link_to "+ Add", new_camera_path, class: "btn btn-outline-success" %></div>
+<div class="container mt-4 mx-auto w-75 ">
+  <h5><strong>Dashboard</strong></h5>
+  <hr>
+  <h2 class="mt-5" style="font-family: 'Amaranth', sans-serif;">My Cameras</h2>
+  <hr>
+  <p><%= image_tag "https://i.pinimg.com/1200x/40/c1/d8/40c1d8caa349faa3aa1c65f5916f146c.jpg", class: "avatar mx-1" %>  <%= current_user.first_name if user_signed_in?%>'s <mark>owned</mark> cameras </p>
+  <hr>
 
-    <h2>My Bookings</h2>
-        <li><%= current_user.first_name if user_signed_in?%>'s <mark>rented</mark> cameras </li>
-          <li>
-              <% current_user.bookings.each do |booking|%>
-              <%= booking.camera.camera_type + " | " + booking.camera.brand + " | " + "Start Date: " + booking.start_date.to_s + " | " + "End Date: " + booking.end_date.to_s + " | " + booking.status + " by " + booking.camera.user.first_name %>
-              <% end %>
-          </li>
+  <ul class="list-group">
+  <% current_user.cameras.each do |camera|%>
+
+  <%# <%= link_to camera.camera_type + " | " + camera.brand + " | "%>
+
+      <li class="list-group-item list-group-item-light d-flex justify-content-between">
+        <div class="d-flex align-items-center">
+        <%= link_to camera.brand, camera, class: "font-weight-bold text-dark h6 text-decoration-none align-middle mb-0 mx-1" %>
+         📷 | <%= camera.camera_type%></div>
+        <div class="d-flex align-items-center"><% camera.bookings.where(status: "Pending").each do |booking|%>
+        state: <strong><%=booking.status%></strong>
+        <%=button_to "Approve", accept_camera_booking_path(:camera_id => booking.camera, :id => booking), method: :patch, class: "btn dash-btn-accept btn-sm" %>
+        <%=button_to "Reject", decline_camera_booking_path(:camera_id => booking.camera, :id => booking), method: :patch, class: "btn dash-btn-reject btn-sm" %>
+<!--        <%=link_to "Delete", dashboard_path(:camera_id => booking.camera, :id => booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn dash-btn-delete btn-sm" %>
+-->
+        <% end %>
+        </div>
+      <% end %>
+      </li>
+
+  </ul>
+
+<hr>
+<div><%=link_to "+ Add new camera", new_camera_path, class: "btn dash-btn-new-cam" %>
+</div>
+
+  <h2 class="mt-5" style="font-family: 'Amaranth', sans-serif;">My Bookings</h2>
+  <hr>
+  <p><%= current_user.first_name if user_signed_in?%>'s <mark>rented</mark> cameras </p>
+  <hr>
+
+  <ul class="list-group mb-5">
+      <% current_user.bookings.each do |booking|%>
+
+      <li class="list-group-item list-group-item-light d-flex justify-content-between" style="height: 45px;">
+      <div >
+      <strong><%= booking.camera.brand %></strong>
+      <%= booking.camera.camera_type %>
+      </div>
+
+      <div><%= "Start Date: " + booking.start_date.to_s + " | " + "End Date: " + booking.end_date.to_s + " | "%><strong><%= booking.status %></strong><%= " by " + booking.camera.user.first_name %>
+
+    </div>
+    </li>
+      <% end %>
+
+  </ul>
 </div>
