@@ -6,15 +6,15 @@ class CamerasController < ApplicationController
     if params[:query].present?
       @cameras = Camera.global_search(params[:query])
     end
-    # OLD SQL query
-    #   sql_subquery = <<~SQL
-    #     cameras.brand @@ :query
-    #     OR cameras.camera_type @@ :query
-    #     OR users.first_name @@ :query
-    #     OR users.last_name @@ :query
-    #   SQL
-    #   @cameras = @cameras.joins(:user).where(sql_subquery, query: params[:query])
-    # end
+    @cameras = Camera.geocoded
+    @markers = @cameras.map do |camera|
+      {
+        lat: camera.latitude,
+        lng: camera.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: {camera: camera}),
+        marker_html: render_to_string(partial: "marker")
+      }
+    end
   end
 
   def show
@@ -36,7 +36,6 @@ class CamerasController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
-
   end
 
   def edit
