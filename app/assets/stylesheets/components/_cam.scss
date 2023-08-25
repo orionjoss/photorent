@@ -1,0 +1,27 @@
+.cam-card {
+  background-color: #9adcdd;
+}
+
+.btn-bar {
+  // display: flex;
+  // justify-content: flex-end;
+  border-radius: 25px;
+  border: none;
+  padding: 5px 10px 5px 10px;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.btn-book {
+  border-radius: 35px;
+  border: none;
+  font-size: x-large;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  transition: 0.3s ease;
+  position: relative;
+  right: 75px;
+}
+.cam-pic {
+  border-radius: 40px 0px 0px 40px;
+}
